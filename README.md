@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+## ReactJS Starter
+
+Features
+
+- API serice with axios
+- State management use Recoil
+- Clean project structure
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
