@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,14 @@ import {
   useParams
 } from "react-router-dom";
 
+import List from './components/List';
+import withListLoading from './components/withListLoading';
+
+// services
+import GithubRepoService from './services/github/GithubRepoService';
+
 export default function App() {
+
   return (
     <Router>
       <div>
@@ -41,7 +48,34 @@ export default function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+
+
+  const ListLoading = withListLoading(List);
+  const [appState, setAppState] = useState({
+    loading: false,
+    repos: null,
+  });
+
+  useEffect(() => {
+    setAppState({ loading: true });
+
+    GithubRepoService.getGithubRepos().then((repos) => {
+      setAppState({ loading: false, repos: repos });
+    });
+
+  }, [setAppState]);
+
+  return (
+    <div>
+      <h2>Home</h2>
+      <div className='container'>
+        <h1>My Repositories</h1>
+      </div>
+      <div className='repo-container'>
+        <ListLoading isLoading={appState.loading} repos={appState.repos} />
+      </div>
+    </div>
+  );
 }
 
 function About() {

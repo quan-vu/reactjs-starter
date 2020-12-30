@@ -1,10 +1,40 @@
-## ReactJS Starter
+# ReactJS Starter
 
 Features
 
 - API serice with axios
 - State management use Recoil
 - Clean project structure
+
+# Quickstart
+
+Quickstart project with this commands:
+
+```shell
+make env
+make init
+make start
+```
+
+Open project on: http://localhost:3000/
+
+
+## Guide for development
+
+### What other .env files can be used?
+
+Note: this feature is available with react-scripts@1.0.0 and higher.
+
+.env: Default.
+.env.local: Local overrides. This file is loaded for all environments except test.
+.env.development, .env.test, .env.production: Environment-specific settings.
+.env.development.local, .env.test.local, .env.production.local: Local overrides of environment-specific settings.
+Files on the left have more priority than files on the right:
+
+npm start: .env.development.local, .env.local, .env.development, .env
+npm run build: .env.production.local, .env.local, .env.production, .env
+npm test: .env.test.local, .env.test, .env (note .env.local is missing)
+These variables will act as the defaults if the machine does not explicitly set them.
 
 
 ## Getting Started with Create React App
@@ -77,3 +107,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
