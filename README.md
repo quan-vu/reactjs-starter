@@ -5,6 +5,7 @@ Features
 - API serice with axios
 - State management use Recoil
 - Clean project structure
+- [Material UI](https://material-ui.com/)
 
 # Quickstart
 
@@ -108,3 +109,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+# Issues
+
+1. Error: Node Sass version 5.0.0 is incompatible with ^4.0.0
+
+    Let check the nodejs version can use the node-sass version. 
+
+    ![Node Sass version compatible](public/node-sass-versions.jpg)
