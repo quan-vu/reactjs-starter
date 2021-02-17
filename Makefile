@@ -1,6 +1,6 @@
 # Quick Command
 env:
-	@cp ./.env.example ./.env.local
+	@cp ./.env.example ./.env
 
 init:
 	@yarn
