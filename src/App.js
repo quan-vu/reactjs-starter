@@ -1,10 +1,9 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
+import React, { Fragment, Suspense, lazy } from 'react';
+import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import theme from "./theme";
+import GlobalStyles from "./GlobalStyles";
+import Pace from "./shared/components/Pace";
 
 // State
 import { useSetRecoilState } from 'recoil';
@@ -17,10 +16,10 @@ import { userState } from './states/userState';
 // services
 import GithubRepoService from './services/github/GithubRepoService';
 
-// pages
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import TopicPage from './pages/TopicPage';
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const TopicPage = lazy(() => import("./pages/TopicPage"));
 
 
 function App() {
@@ -48,6 +47,11 @@ function App() {
 
   return (
       <Router>
+        <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <GlobalStyles />
+        <Pace color={theme.palette.primary.light} />
+
         <div>
           <ul>
             <li>
@@ -60,7 +64,9 @@ function App() {
               <Link to="/topics">Topics</Link>
             </li>
           </ul>
+          </div>
 
+        <Suspense fallback={<Fragment />}>
           <Switch>
             <Route path="/about">
               <AboutPage />
@@ -72,7 +78,8 @@ function App() {
               <HomePage />
             </Route>
           </Switch>
-        </div>
+          </Suspense>
+        </MuiThemeProvider>
       </Router>
   );
 }
