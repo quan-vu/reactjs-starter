@@ -1,0 +1,8 @@
+a {
+  text-decoration: none;
+  transition: 0.15s;
+
+  &:hover {
+    color: var(--primary);
+  }
+}

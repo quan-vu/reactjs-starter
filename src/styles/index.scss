@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--fontSize);
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  * {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    overscroll-behavior: contain;
+  }
+}
+
+@import 'variables';
+
+@import './custom-material-ui/index';
+@import './modules/index';
+@import './base/index';
+@import './components/index';

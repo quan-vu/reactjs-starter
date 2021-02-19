@@ -1,0 +1,49 @@
+.search {
+  position: relative;
+
+  .searchInput,
+  .searchBtn {
+    color: var(--grey-200);
+  }
+
+  .searchInput {
+    height: 40px;
+    width: 100%;
+    max-width: 240px;
+    font-size: var(--fontSize);
+    border: none;
+    outline: none !important;
+    padding: 0;
+    padding-left: 40px;
+    transition: 0.15s;
+    box-shadow: 0px 0px 0px 0px #eaeaea;
+    border: solid 1px #ccc;
+
+    &:focus {
+      box-shadow: 0px 0px 0px 1px #eaeaea;
+      border-radius: 2px;
+    }
+  }
+
+  .searchBtn {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    left: 14px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  &.searchHasValue {
+    .searchBtn {
+      color: var(--primary);
+    }
+
+    .searchInput {
+      box-shadow: 0px 0px 0px 1px #eaeaea;
+      border-radius: 2px;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.header {
+  height: var(--height-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 12px;
+  position: sticky;
+  top: 0;
+  z-index: var(--zIndex-header);
+  background-color: var(--background-header);
+}
+
+.searchWrap {
+  flex: 1;
+}
+
+.menuLeft {
+  display: flex;
+  align-items: center;
+  flex: 2;
+}
+
+.menuRightList {
+  display: flex;
+  align-items: center;
+
+  .menuRightDivide {
+    height: 24px;
+    width: 1px;
+    background-color: #e5e5e5;
+  }
+
+  .menuRightItem {
+    margin: 0 12px;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .menuRightBtnItem {
+    position: relative;
+  }
+}

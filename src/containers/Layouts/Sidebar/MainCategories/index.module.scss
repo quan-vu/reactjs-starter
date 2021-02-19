@@ -1,0 +1,88 @@
+ul.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+
+  .menuTitle {
+    display: inline-flex;
+    cursor: pointer;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  .menuIcon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+  }
+
+  & > li {
+    margin-bottom: 4px;
+
+    & > .menuIcon {
+      margin-top: 2px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-left: solid 1px #e6e6e6;
+      padding-left: 9px;
+
+      li {
+        line-height: 14px;
+        margin-bottom: 12px;
+        padding: 3px 0;
+      }
+    }
+  }
+}
+
+ul.menu li > ul {
+  height: 0;
+  overflow: hidden;
+}
+
+ul.menu li.menuCollapseOpen > ul {
+  height: max-content;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  overflow: visible;
+}
+
+.menuItem {
+  :not(.menuMultiple) {
+    &:hover {
+      span {
+        color: var(--primary);
+      }
+
+      svg path {
+        fill: var(--primary);
+      }
+    }
+  }
+}
+
+.menuActive {
+  .menuLabel {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  svg path {
+    fill: var(--primary);
+  }
+}
+
+.subMenuActive {
+  a {
+    color: var(--primary);
+  }
+}

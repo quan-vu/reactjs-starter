@@ -1,0 +1,10 @@
+.text-overflow-1 {
+  word-break: break-word;
+  display: block;
+  display: -webkit-box !important;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

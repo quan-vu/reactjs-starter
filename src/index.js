@@ -1,18 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { BrowserRouter } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
+import { RecoilRoot } from 'recoil';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { RecoilRoot } from 'recoil';
+import theme from './assets/theme';
+
+import './api/initFirebase';
+import './styles/index.scss';
 
 ReactDOM.render(
-  // Tempory fix for React 17+ with: Error findDOMNode is deprecated in StrictMode
-  // <React.StrictMode>
+  <React.StrictMode>
     <RecoilRoot>
-      <App />
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider maxSnack={3}>
+            <App />
+          </SnackbarProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     </RecoilRoot>
-  // </React.StrictMode>
-  ,
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

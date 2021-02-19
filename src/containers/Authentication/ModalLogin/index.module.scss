@@ -1,0 +1,87 @@
+.wrap {
+  padding: 60px 44px;
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: right center;
+
+  .actions {
+    margin-bottom: 28px;
+  }
+
+  .actionItem {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .btnFacebook {
+    color: var(--blue-300);
+  }
+
+  .btnGoogle {
+    color: var(--primary);
+  }
+
+  .btnFacebook,
+  .btnGoogle {
+    min-height: 40px;
+    text-transform: initial;
+    font-weight: normal;
+    font-size: 13px;
+    border: 1px solid #eaeaea;
+    background-color: #fff;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+
+  .dialogContent {
+    max-width: 306px;
+  }
+
+  .title {
+    color: var(--grey-100);
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 46px;
+    margin-bottom: 22px;
+  }
+
+  .description {
+    color: var(--grey-100);
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 32px;
+  }
+
+  .footer {
+    color: var(--grey-300);
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 992px) {
+    .dialogContent {
+      background-color: #fff;
+      position: relative;
+      z-index: 2;
+      max-width: 100%;
+      border-radius: 5px;
+      padding: 13px;
+      box-shadow: 0px 0px 15px #0000002e;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    background-image: none;
+
+    .dialogContent {
+      box-shadow: none;
+    }
+  }
+}
