@@ -6,11 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // Tempory fix for React 17+ with: Error findDOMNode is deprecated in StrictMode
+  // <React.StrictMode>
     <RecoilRoot>
       <App />
     </RecoilRoot>
-  </React.StrictMode>,
+  // </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 
