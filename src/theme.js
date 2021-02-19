@@ -1,4 +1,5 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+// import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 // colors
 const primary = "#b3294e";

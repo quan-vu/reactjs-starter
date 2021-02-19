@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import App from './App';
+import './index.scss';
+import theme from './theme';
 
 ReactDOM.render(
   // Tempory fix for React 17+ with: Error findDOMNode is deprecated in StrictMode
-  // <React.StrictMode>
+  <React.StrictMode>
     <RecoilRoot>
-      <App />
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
     </RecoilRoot>
-  // </React.StrictMode>
+  </React.StrictMode>
   ,
   document.getElementById('root')
 );
