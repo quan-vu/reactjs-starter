@@ -3,6 +3,7 @@ import css from './index.module.scss';
 import { useRecoilValue } from 'recoil';
 import { userState } from '../../states/userState';
 
+import AlertDialog from 'shared/components/AlertDialog';
 
 function HomePage () {
 
@@ -19,6 +20,8 @@ function HomePage () {
                 <p>ID: {user.id}</p>
                 <p>Fullname: {user.fullname}</p>
             </div>}
+
+            <AlertDialog/>
         </div>
     )
 }
