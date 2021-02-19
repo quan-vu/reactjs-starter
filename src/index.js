@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 import { RecoilRoot } from 'recoil';
 import App from './App';
 import './index.scss';
@@ -14,7 +15,9 @@ ReactDOM.render(
     <RecoilRoot>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <App />
+          <SnackbarProvider maxSnack={3}>
+            <App />
+          </SnackbarProvider>
         </ThemeProvider>
       </BrowserRouter>
     </RecoilRoot>
