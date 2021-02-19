@@ -13,8 +13,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
-import RootRef from '@material-ui/core/RootRef';
-
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 const useStyles = makeStyles({
@@ -24,14 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SimpleDialog = React.forwardRef((props, ref) => {
-
-  const domRef = React.useRef();
-
-  React.useEffect(() => {
-    console.log(domRef.current); // DOM node
-  }, []);
-
+function SimpleDialog(props) {
   const classes = useStyles();
   const { onClose, selectedValue, open } = props;
 
@@ -44,45 +35,40 @@ const SimpleDialog = React.forwardRef((props, ref) => {
   };
 
   return (
-    // <div  ref={ref}>
-    //   Hello, World!
-    //   {selectedValue}
-    // </div>  
-    <RootRef rootRef={domRef}>
-      <Dialog ref={ref} onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-        <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
-        <List>
-          {emails.map((email) => (
-            <ListItem button onClick={() => handleListItemClick(email)} key={email}>
-              <ListItemAvatar>
-                <Avatar className={classes.avatar}>
-                  <PersonIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={email} />
-            </ListItem>
-          ))}
-
-          <ListItem autoFocus button onClick={() => handleListItemClick('addAccount')}>
+    <div>
+      <p>./src/shared/components/SimpleDialog.js</p>
+        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+      <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+      <List>
+        {emails.map((email) => (
+          <ListItem button onClick={() => handleListItemClick(email)} key={email}>
             <ListItemAvatar>
-              <Avatar>
-                <AddIcon />
+              <Avatar className={classes.avatar}>
+                <PersonIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Add account" />
+            <ListItemText primary={email} />
           </ListItem>
-        </List>
-      </Dialog>
-      </RootRef>
-      
-      
-  );
-});
+        ))}
 
-// SimpleDialog.propTypes = {
-//   onClose: PropTypes.func.isRequired,
-//   open: PropTypes.bool.isRequired,
-//   selectedValue: PropTypes.string.isRequired,
-// };
+        <ListItem autoFocus button onClick={() => handleListItemClick('addAccount')}>
+          <ListItemAvatar>
+            <Avatar>
+              <AddIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Add account" />
+        </ListItem>
+      </List>
+    </Dialog>
+    </div>
+  );
+}
+
+SimpleDialog.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  selectedValue: PropTypes.string,
+};
 
 export default SimpleDialog;

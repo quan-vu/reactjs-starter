@@ -21,14 +21,6 @@ function HomePage () {
     const [selectedValue, setSelectedValue] = React.useState(emails[1]);
 
     const handleClickOpen = () => {
-        let value='';
-        if(selectedValue == emails[1]){
-            value = emails[0];
-        }else{
-            value = emails[1];
-        }
-        
-        setSelectedValue(value);
         setOpen(true);
     };
 
