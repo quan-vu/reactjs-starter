@@ -1,10 +1,18 @@
-import React from "react";
+import React, { lazy } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+
+/**
+ * TODO
+ * - [] Lazy not working with router
+*/
+
+// const SandwichesView = lazy(() => import("./views/SandwichesView"));
+import SandwichesView from './views/SandwichesView';
 
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
@@ -17,7 +25,7 @@ const routes = [
   {
     path: "/sandwiches",
     name: "Sandwiches",
-    component: Sandwiches
+    component: SandwichesView
   },
   {
     path: "/tacos",
@@ -78,10 +86,6 @@ function RouteWithSubRoutes(route) {
       )}
     />
   );
-}
-
-function Sandwiches() {
-  return <h2>Sandwiches</h2>;
 }
 
 function Tacos({ routes }) {
