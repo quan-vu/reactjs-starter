@@ -2,9 +2,10 @@
 
 Features
 
-- API serice with axios
-- State management use Recoil
-- Clean project structure
+- [x] API serice with axios
+- [x] State management use Recoil
+- [x] Clean project structure
+- [x] Lazy load compoment with router & sub routes.
 - [Material UI](https://material-ui.com/)
 
 # Quickstart

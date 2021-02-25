@@ -6,13 +6,10 @@ import {
   Link
 } from "react-router-dom";
 
-/**
- * TODO
- * - [] Lazy not working with router
-*/
-
 const SandwichesView = lazy(() => import("./views/SandwichesView"));
-// import SandwichesView from './views/SandwichesView';
+const TacosView = lazy(() => import("./views/TacosView"));
+const TacosBusView = lazy(() => import("./views/TacosBusView"));
+const TacosCartView = lazy(() => import("./views/TacosCartView"));
 
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
@@ -30,15 +27,15 @@ const routes = [
   {
     path: "/tacos",
     name: "Tacos",
-    component: Tacos,
+    component: TacosView,
     routes: [
       {
         path: "/tacos/bus",
-        component: Bus
+        component: TacosBusView
       },
       {
         path: "/tacos/cart",
-        component: Cart
+        component: TacosCartView
       }
     ]
   }
@@ -90,32 +87,3 @@ function RouteWithSubRoutes(route) {
   );
 }
 
-function Tacos({ routes }) {
-  return (
-    <div>
-      <h2>Tacos</h2>
-      <ul>
-        <li>
-          <Link to="/tacos/bus">Bus</Link>
-        </li>
-        <li>
-          <Link to="/tacos/cart">Cart</Link>
-        </li>
-      </ul>
-
-      <Switch>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
-    </div>
-  );
-}
-
-function Bus() {
-  return <h3>Bus</h3>;
-}
-
-function Cart() {
-  return <h3>Cart</h3>;
-}
