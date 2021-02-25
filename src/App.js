@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,8 +11,8 @@ import {
  * - [] Lazy not working with router
 */
 
-// const SandwichesView = lazy(() => import("./views/SandwichesView"));
-import SandwichesView from './views/SandwichesView';
+const SandwichesView = lazy(() => import("./views/SandwichesView"));
+// import SandwichesView from './views/SandwichesView';
 
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
@@ -63,11 +63,13 @@ export default function RouteConfigExample() {
           ))}
         </ul>
 
-        <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </Switch>
+        </Suspense>
       </div>
     </Router>
   );
