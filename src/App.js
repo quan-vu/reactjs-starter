@@ -21,6 +21,23 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const TopicPage = lazy(() => import("./pages/TopicPage"));
 
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: HomePage, 
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: AboutPage, 
+  },
+  {
+    path: '/topics',
+    name: 'Topics',
+    component: TopicPage, 
+  },
+]
 
 function App() {
 
@@ -54,17 +71,13 @@ function App() {
 
         <div>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
+            {routes.map((route) => {
+              return (<li>
+                <Link to={route.path}>{route.name}</Link>
+              </li>)
+            })}
           </ul>
-          </div>
+        </div>
 
         <Suspense fallback={<Fragment />}>
           <Switch>
