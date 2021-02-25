@@ -1,100 +1,115 @@
-import React, { Fragment, Suspense, lazy } from 'react';
-import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import theme from "./theme";
-import GlobalStyles from "./GlobalStyles";
-import Pace from "./shared/components/Pace";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-// State
-import { useSetRecoilState } from 'recoil';
-import { userState } from './states/userState';
+// Some folks find value in a centralized route config.
+// A route config is just data. React is great at mapping
+// data into components, and <Route> is a component.
 
-// Components
-// import List from './components/List';
-// import withListLoading from './components/withListLoading';
-
-// services
-import GithubRepoService from './services/github/GithubRepoService';
-
-
-const HomePage = lazy(() => import("./pages/HomePage"));
-const AboutPage = lazy(() => import("./pages/AboutPage"));
-const TopicPage = lazy(() => import("./pages/TopicPage"));
-
+// Our route config is just an array of logical "routes"
+// with `path` and `component` props, ordered the same
+// way you'd do inside a `<Switch>`.
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: HomePage, 
+    path: "/sandwiches",
+    name: "Sandwiches",
+    component: Sandwiches
   },
   {
-    path: '/about',
-    name: 'About',
-    component: AboutPage, 
-  },
-  {
-    path: '/topics',
-    name: 'Topics',
-    component: TopicPage, 
-  },
-]
-
-function App() {
-
-  const setUser = useSetRecoilState(userState);
-
-  React.useEffect(() => {
-    getProfile();
-    getGithubRepos();
-  }, []);
-
-  const getProfile = () => {
-    const fakeUser = {
-      id: 1,
-      fullname: "User 1",
-      avatar: "https://avatars.githubusercontent.com/u/46224928?s=460&u=d42fda2f2329da92494d01c8dda613c5887f0309&v=4"
-    }
-    setUser(fakeUser);
+    path: "/tacos",
+    name: "Tacos",
+    component: Tacos,
+    routes: [
+      {
+        path: "/tacos/bus",
+        component: Bus
+      },
+      {
+        path: "/tacos/cart",
+        component: Cart
+      }
+    ]
   }
+];
 
-  const getGithubRepos = async () => {
-    const repos = await GithubRepoService.getGithubRepos();
-    console.log(repos);
-  }
-
+export default function RouteConfigExample() {
   return (
-      <Router>
-        <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <GlobalStyles />
-        <Pace color={theme.palette.primary.light} />
+    <Router>
+      <div>
+        <ul>
+          {/* <li>
+            <Link to="/tacos">Tacos</Link>
+          </li> 
+          <li>
+            <Link to="/sandwiches">Sandwiches</Link>
+          </li>
+          */}
+          {routes.map((route, i) => (
+            <li key={i}>
+              <Link to={route.path}>{route.name}</Link>
+            </li>
+          ))}
+        </ul>
 
-        <div>
-          <ul>
-            {routes.map((route) => {
-              return (<li>
-                <Link to={route.path}>{route.name}</Link>
-              </li>)
-            })}
-          </ul>
-        </div>
-
-        <Suspense fallback={<Fragment />}>
-          <Switch>
-            <Route path="/about">
-              <AboutPage />
-            </Route>
-            <Route path="/topics">
-              <TopicPage />
-            </Route>
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-          </Suspense>
-        </MuiThemeProvider>
-      </Router>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+// A special wrapper for <Route> that knows how to
+// handle "sub"-routes by passing them in a `routes`
+// prop to the component it renders.
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
+
+function Sandwiches() {
+  return <h2>Sandwiches</h2>;
+}
+
+function Tacos({ routes }) {
+  return (
+    <div>
+      <h2>Tacos</h2>
+      <ul>
+        <li>
+          <Link to="/tacos/bus">Bus</Link>
+        </li>
+        <li>
+          <Link to="/tacos/cart">Cart</Link>
+        </li>
+      </ul>
+
+      <Switch>
+        {routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
+      </Switch>
+    </div>
+  );
+}
+
+function Bus() {
+  return <h3>Bus</h3>;
+}
+
+function Cart() {
+  return <h3>Cart</h3>;
+}
