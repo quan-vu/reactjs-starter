@@ -1,12 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
+  useParams} from "react-router-dom";
 
 function TopicView() {
   // The <Route> that rendered this component has a

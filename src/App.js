@@ -1,13 +1,14 @@
 import React, { Suspense, lazy } from "react";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import css from './App.scss';
 
 // By default, router "/" must be import, it can not use lazyload
 import Layout from './shared/components/Layouts';
+
 
 // Lazy load component
 const SandwichesView = lazy(() => import("./views/SandwichesView"));
@@ -15,8 +16,9 @@ const TacosView = lazy(() => import("./views/TacosView"));
 const TacosBusView = lazy(() => import("./views/TacosBusView"));
 const TacosCartView = lazy(() => import("./views/TacosCartView"));
 const TopicsView = lazy(() => import("./views/TopicsView"));
-const TopicView = lazy(() => import("./views/TopicView"));
 const HomeView = lazy(() => import("./views/HomeView"));
+
+const SamplePage = lazy(() => import("./pages/SamplePage"));
 
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
@@ -71,7 +73,15 @@ const routes = [
     exact: false,
     layout: true,
     component: TopicsView,
-  }
+  },
+  {
+    path: "/samples",
+    name: "Samples",
+    key: "SAMPLES",
+    exact: false,
+    layout: true,
+    component: SamplePage,
+  },  
 ];
 
 export default function App() {
@@ -80,7 +90,7 @@ export default function App() {
       <Switch>
         <Route>
           <Layout>
-            <ul>
+            <ul className={css.AppMenu}>
               {routes.map((route) => (
                 <li key={route.key}>
                   <Link to={route.path}>{route.name}</Link>
