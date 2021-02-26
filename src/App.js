@@ -41,8 +41,8 @@ const routes = [
     component: SandwichesView
   },
   {
-    path: "/topics",
-    name: "Topics",
+    path: "/tacos",
+    name: "Tacos",
     key: "TACOS",
     exact: false,
     layout: true,
@@ -50,10 +50,14 @@ const routes = [
     routes: [
       {
         path: "/tacos/bus",
+        name: "Bus",
+        key: "TACOS_BUS",
         component: TacosBusView
       },
       {
         path: "/tacos/cart",
+        name: "Cart",
+        key: "TACOS_CART",
         component: TacosCartView
       }
     ]
