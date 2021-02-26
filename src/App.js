@@ -14,6 +14,8 @@ const SandwichesView = lazy(() => import("./views/SandwichesView"));
 const TacosView = lazy(() => import("./views/TacosView"));
 const TacosBusView = lazy(() => import("./views/TacosBusView"));
 const TacosCartView = lazy(() => import("./views/TacosCartView"));
+const TopicsView = lazy(() => import("./views/TopicsView"));
+const TopicView = lazy(() => import("./views/TopicView"));
 const HomeView = lazy(() => import("./views/HomeView"));
 
 // Some folks find value in a centralized route config.
@@ -42,7 +44,7 @@ const routes = [
   },
   {
     path: "/tacos",
-    name: "Tacos",
+    name: "Tacos (demo nested static routes)",
     key: "TACOS",
     exact: false,
     layout: true,
@@ -61,6 +63,14 @@ const routes = [
         component: TacosCartView
       }
     ]
+  },
+  {
+    path: "/topics",
+    name: "Topics  (demo nested routes with params :topicId)",
+    key: "TOPICS",
+    exact: false,
+    layout: true,
+    component: TopicsView,
   }
 ];
 

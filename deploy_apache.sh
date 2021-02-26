@@ -1,15 +1,15 @@
-##### Setup vitual host on Apache Ubuntu
-##### Author: Quan Vu
-##### Usage: ./setup_vhost_apache.sh
-##### Required: Apache server run on port 8800
+# Auto setup apache vitual host and deploy React App
+# Required: 
+#   - Apache server run on port 8800
+# Usage: 
+#   - $ make deploy
 
 ## Step 1: Make directories & files struct
-
-HOST_NAME='reactjs-starter.local';
-HOST_PORT=8800
-REACT_APP_ROOT=$PWD
-REACT_APP_BUILD_DIR=$PWD/build
-CONFIG=$REACT_APP_ROOT/scripts/httpd.conf;
+HOST_NAME=$ENV_HOST_NAME
+HOST_PORT=$ENV_HOST_PORT
+REACT_APP_ROOT=$ENV_SOURCE_ROOT_DIR
+REACT_APP_BUILD_DIR=$REACT_APP_ROOT/build
+APACHE_CONFIG_FILE=$REACT_APP_ROOT/httpd.conf;
 
 echo "<VirtualHost *:$HOST_PORT>
     ServerAdmin webmaster@localhost
@@ -30,7 +30,7 @@ echo "<VirtualHost *:$HOST_PORT>
       RewriteCond %{REQUEST_FILENAME} !-d
     </IfModule>	
 
-</VirtualHost>" > $CONFIG;
+</VirtualHost>" > $APACHE_CONFIG_FILE;
 
 ## Step 2: Create test file: index.php
 
@@ -38,7 +38,7 @@ echo "<VirtualHost *:$HOST_PORT>
 echo "1. Configure apache virtual host: $HOST_NAME.conf ..."
 sudo rm -rf /etc/apache2/sites-available/$HOST_NAME.conf;
 sudo rm -rf /etc/apache2/sites-enabled/$HOST_NAME.conf;
-sudo ln -s $CONFIG /etc/apache2/sites-available/$HOST_NAME.conf;
+sudo ln -s $APACHE_CONFIG_FILE /etc/apache2/sites-available/$HOST_NAME.conf;
 sudo a2ensite $HOST_NAME.conf;
 sudo systemctl reload apache2
 
@@ -48,8 +48,8 @@ echo "2. Add hostname: 127.0.0.1 $HOST_NAME to /etc/hosts";
 # sudo gedit /etc/hosts;
 
 echo ""
-echo "3. Openning project"
-x-www-browser http://$HOST_NAME:$HOST_PORT;
+echo "3. Openning project on default browser"
+# x-www-browser http://$HOST_NAME:$HOST_PORT;
 
 ## Step 4: Finish.
 echo ""

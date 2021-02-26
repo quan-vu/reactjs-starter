@@ -4,11 +4,9 @@ export PORT=4500	# Fix run React in special PORT in Linux
 
 # Deployment config
 # Local:
-export SOURCE_ROOT_DIR=${PWD}
-export SOURCE_BUILD_DIR=${PWD}/build
-export DEPLOYMENT_ROOT_DIR=${PWD}/scripts/reactjs-starter.local/htdocs
-export DEPLOYMENT_DOMAIN=reactjs-starter.local
-export DEPLOYMENT_DOMAIN_PORT=8800
+export ENV_SOURCE_ROOT_DIR=${PWD}
+export ENV_HOST_NAME=reactjs-starter.local
+export ENV_HOST_PORT=8800
 
 env:
 	@cp ./.env.example ./.env
@@ -20,6 +18,10 @@ start:
 	@yarn start
 
 deploy:
-	yarn build
-	$(shell x-www-browser http://${DEPLOYMENT_DOMAIN}:${DEPLOYMENT_DOMAIN_PORT})
+	./deploy_apache.sh
+	@yarn build
+	@echo ""
+	@echo ">> Success build project."
+	@echo ">> Success deploy project at: http://${ENV_HOST_NAME}:${ENV_HOST_PORT}"
+	@echo ""
 	
