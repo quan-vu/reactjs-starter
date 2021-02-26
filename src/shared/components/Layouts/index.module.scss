@@ -1,0 +1,8 @@
+.body {
+  padding-left: var(--width-sidebar);
+}
+
+.content {
+  padding: 0 12px;
+  height: calc(100vh - var(--height-header));
+}
