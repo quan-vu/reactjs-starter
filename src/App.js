@@ -41,32 +41,26 @@ const routes = [
     component: SandwichesView
   },
   {
-    path: "/tacos",
-    name: "Tacos",
+    path: "/topics",
+    name: "Topics",
     key: "TACOS",
-    exact: true,
+    exact: false,
     layout: true,
     component: TacosView,
     routes: [
       {
         path: "/tacos/bus",
-        key: "TACOS_BUS",
-        exact: true,
-        layout: true,
         component: TacosBusView
       },
       {
         path: "/tacos/cart",
-        key: "TACOS_CART",
-        exact: true,
-        layout: true,
         component: TacosCartView
       }
     ]
   }
 ];
 
-export default function RouteConfigExample() {
+export default function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
@@ -102,13 +96,14 @@ function RouteWithSubRoutes(route) {
     <Route
       path={route.path}
       exact={route.exact}
-      render={props => (
-        // pass the sub-routes down to keep nesting
-        <route.component 
-          {...props} 
-          layout={route.layout}
-          routes={route.routes} 
-        />
+      render={(props) => (
+        <>
+          <route.component
+            {...props}
+            layout={route.layout}
+            routes={route.routes}
+          />
+        </>
       )}
     />
   );
