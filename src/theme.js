@@ -1,19 +1,19 @@
-// import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+// import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
 import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 // colors
-const primary = "#b3294e";
-const secondary = "#4829B2";
-const black = "#343a40";
-const darkBlack = "rgb(36, 40, 44)";
-const background = "#f5f5f5";
-const warningLight = "rgba(253, 200, 69, .3)";
-const warningMain = "rgba(253, 200, 69, .5)";
-const warningDark = "rgba(253, 200, 69, .7)";
+const primary = '#b3294e';
+const secondary = '#4829B2';
+const black = '#343a40';
+const darkBlack = 'rgb(36, 40, 44)';
+const background = '#f5f5f5';
+const warningLight = 'rgba(253, 200, 69, .3)';
+const warningMain = 'rgba(253, 200, 69, .5)';
+const warningDark = 'rgba(253, 200, 69, .7)';
 
 // border
 const borderWidth = 2;
-const borderColor = "rgba(0, 0, 0, 0.13)";
+const borderColor = 'rgba(0, 0, 0, 0.13)';
 
 // breakpoints
 const xl = 1920;
@@ -63,12 +63,12 @@ const theme = createMuiTheme({
   },
   border: {
     borderColor: borderColor,
-    borderWidth: borderWidth
+    borderWidth: borderWidth,
   },
   overrides: {
     MuiExpansionPanel: {
       root: {
-        position: "static"
+        position: 'static'
       }
     },
     MuiTableCell: {
@@ -100,7 +100,7 @@ const theme = createMuiTheme({
     },
     MuiDialog: {
       paper: {
-        width: "100%",
+        width: '100%',
         maxWidth: 430,
         marginLeft: spacing,
         marginRight: spacing

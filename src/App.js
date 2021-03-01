@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 
 // By default, router "/" must be import, it can not use lazyload
-import Layout from './shared/components/Layouts';
-import routes from './routes';
+import Layout from 'src/shared/components/Layouts';
+import routes from 'src/routes';
 
 export default function App() {
   return (

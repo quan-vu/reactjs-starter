@@ -1,15 +1,15 @@
 import React from 'react';
 import css from './index.module.scss';
 import { useRecoilValue } from 'recoil';
-import { userState } from 'states/userState';
+import { userState } from 'src/states/userState';
 import RootRef from '@material-ui/core/RootRef';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-import Helloworld from 'shared/components/Helloworld';
-import SimpleDialog from 'shared/components/SimpleDialog';
+import Helloworld from 'src/shared/components/Helloworld';
+import SimpleDialog from 'src/shared/components/SimpleDialog';
 
 function HomePage () {
 

@@ -1,22 +1,22 @@
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core';
 
 const styles = {
-  "@global": {
-    ".pace": {
-      pointerEvents: "none",
-      userSelect: "none"
+  '@global': {
+    '.pace': {
+      pointerEvents: 'none',
+      userSelect: 'none'
     },
-    ".pace-inactive": {
-      display: "none"
+    '.pace-inactive': {
+      display: 'none'
     },
-    ".pace .pace-progress": {
+    '.pace .pace-progress': {
       background: props => props.color || null,
-      position: "fixed",
+      position: 'fixed',
       zIndex: 2000,
       top: 0,
-      right: "100%",
-      width: "100%",
+      right: '100%',
+      width: '100%',
       height: 3
     }
   }
@@ -40,7 +40,7 @@ export default withStyles(styles)(Pace);
  */
 window.paceOptions = {
   ajax: {
-    trackMethods: ["GET", "POST"]
+    trackMethods: ['GET', 'POST']
   }
 };
 
@@ -127,18 +127,18 @@ function activatePace() {
       startOnPageLoad: !0,
       restartOnPushState: !0,
       restartOnRequestAfter: 500,
-      target: "body",
-      elements: { checkInterval: 100, selectors: ["body"] },
+      target: 'body',
+      elements: { checkInterval: 100, selectors: ['body'] },
       eventLag: { minSamples: 10, sampleCount: 3, lagThreshold: 3 },
-      ajax: { trackMethods: ["GET"], trackWebSockets: !0, ignoreURLs: [] }
+      ajax: { trackMethods: ['GET'], trackWebSockets: !0, ignoreURLs: [] }
     },
       C = function() {
         var a;
         return null !=
           (a =
-            "undefined" != typeof performance &&
+            'undefined' != typeof performance &&
             null !== performance &&
-            "function" == typeof performance.now
+            'function' == typeof performance.now
               ? performance.now()
               : void 0)
           ? a
@@ -181,7 +181,7 @@ function activatePace() {
           (c = arguments[0]),
           (b = arguments[1]),
           (a = 3 <= arguments.length ? X.call(arguments, 2) : []),
-          "function" == typeof c[b] ? c[b].apply(c, a) : c[b]
+          'function' == typeof c[b] ? c[b].apply(c, a) : c[b]
         );
       },
       v = function() {
@@ -199,9 +199,9 @@ function activatePace() {
               Y.call(c, a) &&
                 ((e = c[a]),
                 null != b[a] &&
-                "object" == typeof b[a] &&
+                'object' == typeof b[a] &&
                 null != e &&
-                "object" == typeof e
+                'object' == typeof e
                   ? v(b[a], e)
                   : (b[a] = e));
         return b;
@@ -215,18 +215,18 @@ function activatePace() {
       x = function(a, b) {
         var c, d, e;
         if (
-          (null == a && (a = "options"),
+          (null == a && (a = 'options'),
           null == b && (b = !0),
-          (e = document.querySelector("[data-pace-" + a + "]")))
+          (e = document.querySelector('[data-pace-' + a + ']')))
         ) {
-          if (((c = e.getAttribute("data-pace-" + a)), !b)) return c;
+          if (((c = e.getAttribute('data-pace-' + a)), !b)) return c;
           try {
             return JSON.parse(c);
           } catch (f) {
             return (
               (d = f),
-              "undefined" != typeof console && null !== console
-                ? console.error("Error parsing inline pace options", d)
+              'undefined' != typeof console && null !== console
+                ? console.error('Error parsing inline pace options', d)
                 : void 0
             );
           }
@@ -284,7 +284,7 @@ function activatePace() {
       window.Pace = j,
       v(j, g.prototype),
       D = j.options = v({}, u, window.paceOptions, x()),
-      U = ["ajax", "document", "eventLag", "elements"],
+      U = ['ajax', 'document', 'eventLag', 'elements'],
       Q = 0,
       S = U.length;
     S > Q;
@@ -306,13 +306,13 @@ function activatePace() {
           var a;
           if (null == this.el) {
             if (((a = document.querySelector(D.target)), !a)) throw new i();
-            (this.el = document.createElement("div")),
-              (this.el.className = "pace pace-active"),
+            (this.el = document.createElement('div')),
+              (this.el.className = 'pace pace-active'),
               (document.body.className = document.body.className.replace(
                 /pace-done/g,
-                ""
+                ''
               )),
-              (document.body.className += " pace-running"),
+              (document.body.className += ' pace-running'),
               (this.el.innerHTML =
                 '<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>'),
               null != a.firstChild
@@ -325,13 +325,13 @@ function activatePace() {
           var a;
           return (
             (a = this.getElement()),
-            (a.className = a.className.replace("pace-active", "")),
-            (a.className += " pace-inactive"),
+            (a.className = a.className.replace('pace-active', '')),
+            (a.className += ' pace-inactive'),
             (document.body.className = document.body.className.replace(
-              "pace-running",
-              ""
+              'pace-running',
+              ''
             )),
-            (document.body.className += " pace-done")
+            (document.body.className += ' pace-done')
           );
         }),
         (a.prototype.update = function(a) {
@@ -350,8 +350,8 @@ function activatePace() {
           if (null == document.querySelector(D.target)) return !1;
           for (
             a = this.getElement(),
-              d = "translate3d(" + this.progress + "%, 0, 0)",
-              g = ["webkitTransform", "msTransform", "transform"],
+              d = 'translate3d(' + this.progress + '%, 0, 0)',
+              g = ['webkitTransform', 'msTransform', 'transform'],
               e = 0,
               f = g.length;
             f > e;
@@ -362,14 +362,14 @@ function activatePace() {
             (!this.lastRenderedProgress ||
               this.lastRenderedProgress | (0 !== this.progress) | 0) &&
               (a.children[0].setAttribute(
-                "data-progress-text",
-                "" + (0 | this.progress) + "%"
+                'data-progress-text',
+                '' + (0 | this.progress) + '%'
               ),
               this.progress >= 100
-                ? (c = "99")
-                : ((c = this.progress < 10 ? "0" : ""),
+                ? (c = '99')
+                : ((c = this.progress < 10 ? '0' : ''),
                   (c += 0 | this.progress)),
-              a.children[0].setAttribute("data-progress", "" + c)),
+              a.children[0].setAttribute('data-progress', '' + c)),
             (this.lastRenderedProgress = this.progress)
           );
         }),
@@ -412,7 +412,7 @@ function activatePace() {
         try {
           (e = b.prototype[d]),
             f.push(
-              null == a[d] && "function" != typeof e ? (a[d] = e) : void 0
+              null == a[d] && 'function' != typeof e ? (a[d] = e) : void 0
             );
         } catch (g) {
           c = g;
@@ -425,7 +425,7 @@ function activatePace() {
       return (
         (b = arguments[0]),
         (a = 2 <= arguments.length ? X.call(arguments, 1) : []),
-        A.unshift("ignore"),
+        A.unshift('ignore'),
         (c = b.apply(null, a)),
         A.shift(),
         c
@@ -436,7 +436,7 @@ function activatePace() {
       return (
         (b = arguments[0]),
         (a = 2 <= arguments.length ? X.call(arguments, 1) : []),
-        A.unshift("track"),
+        A.unshift('track'),
         (c = b.apply(null, a)),
         A.shift(),
         c
@@ -444,9 +444,9 @@ function activatePace() {
     }),
     (J = function(a) {
       var b;
-      if ((null == a && (a = "GET"), "track" === A[0])) return "force";
+      if ((null == a && (a = 'GET'), 'track' === A[0])) return 'force';
       if (!A.length && D.ajax) {
-        if ("socket" === a && D.ajax.trackWebSockets) return !0;
+        if ('socket' === a && D.ajax.trackWebSockets) return !0;
         if (((b = a.toUpperCase()), $.call(D.ajax.trackMethods, b) >= 0))
           return !0;
       }
@@ -463,7 +463,7 @@ function activatePace() {
               (b = a.open),
               (a.open = function(d, e) {
                 return (
-                  J(d) && c.trigger("request", { type: d, url: e, request: a }),
+                  J(d) && c.trigger('request', { type: d, url: e, request: a }),
                   b.apply(a, arguments)
                 );
               })
@@ -490,9 +490,9 @@ function activatePace() {
             var d;
             return (
               (d = null != b ? new N(a, b) : new N(a)),
-              J("socket") &&
-                c.trigger("request", {
-                  type: "socket",
+              J('socket') &&
+                c.trigger('request', {
+                  type: 'socket',
                   url: a,
                   protocols: b,
                   request: d
@@ -514,12 +514,12 @@ function activatePace() {
     (I = function(a) {
       var b, c, d, e;
       for (e = D.ajax.ignoreURLs, c = 0, d = e.length; d > c; c++)
-        if (((b = e[c]), "string" == typeof b)) {
+        if (((b = e[c]), 'string' == typeof b)) {
           if (-1 !== a.indexOf(b)) return !0;
         } else if (b.test(a)) return !0;
       return !1;
     }),
-    y().on("request", function(b) {
+    y().on('request', function(b) {
       var c, d, e, f, g;
       return (
         (f = b.type),
@@ -527,16 +527,16 @@ function activatePace() {
         (g = b.url),
         I(g)
           ? void 0
-          : j.running || (D.restartOnRequestAfter === !1 && "force" !== J(f))
+          : j.running || (D.restartOnRequestAfter === !1 && 'force' !== J(f))
           ? void 0
           : ((d = arguments),
             (c = D.restartOnRequestAfter || 0),
-            "boolean" == typeof c && (c = 0),
+            'boolean' == typeof c && (c = 0),
             setTimeout(function() {
               var b, c, g, h, i, k;
               if (
                 (b =
-                  "socket" === f
+                  'socket' === f
                     ? e.readyState < 2
                     : 0 < (h = e.readyState) && 4 > h)
               ) {
@@ -560,7 +560,7 @@ function activatePace() {
       function a() {
         var a = this;
         (this.elements = []),
-          y().on("request", function() {
+          y().on('request', function() {
             return a.watch.apply(a, arguments);
           });
       }
@@ -573,7 +573,7 @@ function activatePace() {
             (e = a.url),
             I(e)
               ? void 0
-              : ((c = "socket" === d ? new n(b) : new o(b)),
+              : ((c = 'socket' === d ? new n(b) : new o(b)),
                 this.elements.push(c))
           );
         }),
@@ -593,7 +593,7 @@ function activatePace() {
           for (
             c = null,
               a.addEventListener(
-                "progress",
+                'progress',
                 function(a) {
                   return (h.progress = a.lengthComputable
                     ? (100 * a.loaded) / a.total
@@ -601,7 +601,7 @@ function activatePace() {
                 },
                 !1
               ),
-              g = ["load", "abort", "timeout", "error"],
+              g = ['load', 'abort', 'timeout', 'error'],
               d = 0,
               e = g.length;
             e > d;
@@ -623,7 +623,7 @@ function activatePace() {
                 0 === (b = a.readyState) || 4 === b
                   ? (h.progress = 100)
                   : 3 === a.readyState && (h.progress = 50),
-                "function" == typeof f ? f.apply(null, arguments) : void 0
+                'function' == typeof f ? f.apply(null, arguments) : void 0
               );
             });
       }
@@ -637,7 +637,7 @@ function activatePace() {
           e,
           f = this;
         for (
-          this.progress = 0, e = ["error", "open"], c = 0, d = e.length;
+          this.progress = 0, e = ['error', 'open'], c = 0, d = e.length;
           d > c;
           c++
         )
@@ -700,7 +700,7 @@ function activatePace() {
             return (
               null != c.states[document.readyState] &&
                 (c.progress = c.states[document.readyState]),
-              "function" == typeof a ? a.apply(null, arguments) : void 0
+              'function' == typeof a ? a.apply(null, arguments) : void 0
             );
           });
       }
@@ -744,13 +744,13 @@ function activatePace() {
           (this.rate = D.initialRate),
           (this.catchup = 0),
           (this.progress = this.lastProgress = 0),
-          null != this.source && (this.progress = F(this.source, "progress"));
+          null != this.source && (this.progress = F(this.source, 'progress'));
       }
       return (
         (a.prototype.tick = function(a, b) {
           var c;
           return (
-            null == b && (b = F(this.source, "progress")),
+            null == b && (b = F(this.source, 'progress')),
             b >= 100 && (this.done = !0),
             b === this.last
               ? (this.sinceLastUpdate += a)
@@ -800,7 +800,7 @@ function activatePace() {
       var a, c, d, e, f, g, h, i;
       for (
         j.sources = L = [],
-          g = ["ajax", "elements", "document", "eventLag"],
+          g = ['ajax', 'elements', 'document', 'eventLag'],
           c = 0,
           e = g.length;
         e > c;
@@ -817,16 +817,16 @@ function activatePace() {
     })(),
     (j.stop = function() {
       return (
-        j.trigger("stop"),
+        j.trigger('stop'),
         (j.running = !1),
         r.destroy(),
         (s = !0),
-        null != p && ("function" == typeof t && t(p), (p = null)),
+        null != p && ('function' == typeof t && t(p), (p = null)),
         B()
       );
     }),
     (j.restart = function() {
-      return j.trigger("restart"), j.stop(), j.start();
+      return j.trigger('restart'), j.stop(), j.start();
     }),
     (j.go = function() {
       var a;
@@ -860,9 +860,9 @@ function activatePace() {
             r.update(M.tick(b, d)),
             r.done() || f || s
               ? (r.update(100),
-                j.trigger("done"),
+                j.trigger('done'),
                 setTimeout(function() {
-                  return r.finish(), (j.running = !1), j.trigger("hide");
+                  return r.finish(), (j.running = !1), j.trigger('hide');
                 }, Math.max(D.ghostTime, Math.max(D.minTime - (C() - a), 0))))
               : c()
           );
@@ -876,15 +876,15 @@ function activatePace() {
       } catch (b) {
         i = b;
       }
-      return document.querySelector(".pace")
-        ? (j.trigger("start"), j.go())
+      return document.querySelector('.pace')
+        ? (j.trigger('start'), j.go())
         : setTimeout(j.start, 50);
     }),
-    "function" == typeof define && define.amd
+    'function' == typeof define && define.amd
       ? define(function() {
           return j;
         })
-      : "object" == typeof exports
+      : 'object' == typeof exports
       ? (module.exports = j)
       : D.startOnPageLoad && j.start();
 }
