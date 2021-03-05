@@ -3,7 +3,7 @@ import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSize
 
 // colors
 const primary = '#b3294e';
-const secondary = '#4829B2';
+const secondary = '#f50057';
 const black = '#343a40';
 const darkBlack = 'rgb(36, 40, 44)';
 const background = '#f5f5f5';
@@ -27,8 +27,18 @@ const spacing = 8;
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: primary },
-    secondary: { main: secondary },
+    primary: {
+      light: '#4791db',
+      main: '#1976d3',
+      dark: '#115293',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#f73378',
+      main: '#f50057',
+      dark: '#ab003c',
+      contrastText: '#fff',
+    },
     common: {
       black,
       darkBlack

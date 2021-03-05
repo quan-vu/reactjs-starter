@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { RecoilRoot } from 'recoil';
-import App from './App';
+import App from './components/App/App';
 import './index.scss';
 import theme from './theme';
 

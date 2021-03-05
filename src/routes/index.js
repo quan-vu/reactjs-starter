@@ -1,14 +1,14 @@
 import React, { Suspense, lazy } from "react";
 
 // Lazy load component
-const SandwichesView = lazy(() => import("../views/SandwichesView"));
-const TacosView = lazy(() => import("../views/TacosView"));
-const TacosBusView = lazy(() => import("../views/TacosBusView"));
-const TacosCartView = lazy(() => import("../views/TacosCartView"));
+// const SandwichesView = lazy(() => import("../views/SandwichesView"));
+// const TacosView = lazy(() => import("../views/TacosView"));
+// const TacosBusView = lazy(() => import("../views/TacosBusView"));
+// const TacosCartView = lazy(() => import("../views/TacosCartView"));
 const TopicsView = lazy(() => import("../views/TopicsView"));
 const HomeView = lazy(() => import("../views/HomeView"));
 
-const SamplePage = lazy(() => import("../pages/SamplePage"));
+// const SamplePage = lazy(() => import("../pages/SamplePage"));
 
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
@@ -27,36 +27,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: "/sandwiches",
-    name: "Sandwiches",
-    key: "SANDWICHES",
-    exact: true,
-    layout: true,
-    component: SandwichesView
-  },
-  {
-    path: "/tacos",
-    name: "Tacos (demo nested static routes)",
-    key: "TACOS",
-    exact: false,
-    layout: true,
-    component: TacosView,
-    routes: [
-      {
-        path: "/tacos/bus",
-        name: "Bus",
-        key: "TACOS_BUS",
-        component: TacosBusView
-      },
-      {
-        path: "/tacos/cart",
-        name: "Cart",
-        key: "TACOS_CART",
-        component: TacosCartView
-      }
-    ]
-  },
-  {
     path: "/topics",
     name: "Topics  (demo nested routes with params :topicId)",
     key: "TOPICS",
@@ -64,14 +34,44 @@ const routes = [
     layout: true,
     component: TopicsView,
   },
-  {
-    path: "/samples",
-    name: "Samples",
-    key: "SAMPLES",
-    exact: false,
-    layout: true,
-    component: SamplePage,
-  },  
+  // {
+  //   path: "/sandwiches",
+  //   name: "Sandwiches",
+  //   key: "SANDWICHES",
+  //   exact: true,
+  //   layout: true,
+  //   component: SandwichesView
+  // },
+  // {
+  //   path: "/tacos",
+  //   name: "Tacos (demo nested static routes)",
+  //   key: "TACOS",
+  //   exact: false,
+  //   layout: true,
+  //   component: TacosView,
+  //   routes: [
+  //     {
+  //       path: "/tacos/bus",
+  //       name: "Bus",
+  //       key: "TACOS_BUS",
+  //       component: TacosBusView
+  //     },
+  //     {
+  //       path: "/tacos/cart",
+  //       name: "Cart",
+  //       key: "TACOS_CART",
+  //       component: TacosCartView
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: "/samples",
+  //   name: "Samples",
+  //   key: "SAMPLES",
+  //   exact: false,
+  //   layout: true,
+  //   component: SamplePage,
+  // },  
 ];
 
 export default routes;
