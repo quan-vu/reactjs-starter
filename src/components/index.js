@@ -1,2 +1,3 @@
-// For reusable components only
-
+/**
+ * Implement shared and reusable components only
+*/
