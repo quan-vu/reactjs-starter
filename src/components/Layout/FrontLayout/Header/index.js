@@ -14,6 +14,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Container from '@material-ui/core/Container';
+
+import Logo from 'src/components/Layout/Logo';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -168,18 +171,17 @@ export default function PrimarySearchAppBar() {
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
+        <Container>
+          <Toolbar>
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
+          </IconButton> */}          
+          <Logo/>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -228,6 +230,7 @@ export default function PrimarySearchAppBar() {
             </IconButton>
           </div>
         </Toolbar>
+        </Container>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}

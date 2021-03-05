@@ -7,14 +7,14 @@ import { SnackbarProvider } from 'notistack';
 import { RecoilRoot } from 'recoil';
 import App from './components/App/App';
 import './index.scss';
-import theme from './theme';
+import defaultTheme from './themes/default-theme';
 
 ReactDOM.render(
   // Tempory fix for React 17+ with: Error findDOMNode is deprecated in StrictMode
   // <React.StrictMode>
     <RecoilRoot>
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={defaultTheme}>
           <SnackbarProvider maxSnack={3}>
             <App />
           </SnackbarProvider>

@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from "react";
 
 // Lazy load component
+const HomePage = lazy(() => import('src/modules/HomePage'));
+
 // const SandwichesView = lazy(() => import("../views/SandwichesView"));
 // const TacosView = lazy(() => import("../views/TacosView"));
 // const TacosBusView = lazy(() => import("../views/TacosBusView"));
@@ -24,7 +26,7 @@ const routes = [
     key: "ROOT",
     exact: true,
     layout: true,
-    component: HomeView
+    component: HomePage
   },
   {
     path: "/topics",

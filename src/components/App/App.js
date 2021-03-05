@@ -5,8 +5,9 @@ import {
   Link
 } from "react-router-dom";
 
+
 // By default, router "/" must be import, it can not use lazyload
-import Layout from 'src/components/Layout/MainLayout';
+import FrontLayout from 'src/components/Layout/FrontLayout';
 import routes from 'src/routes';
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route>
-          <Layout>
+          <FrontLayout>
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
                 {routes.map((route) => (
@@ -22,7 +23,7 @@ export default function App() {
                 ))}
               </Switch>
             </Suspense>
-          </Layout>
+          </FrontLayout>
         </Route>
       </Switch>
     </Suspense>

@@ -25,7 +25,7 @@ const xs = 0;
 // spacing
 const spacing = 8;
 
-const theme = createMuiTheme({
+const blueTheme = createMuiTheme({
   palette: {
     primary: {
       light: '#4791db',
@@ -135,4 +135,115 @@ const theme = createMuiTheme({
   }
 });
 
-export default responsiveFontSizes(theme);
+
+const WhiteTheme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#4791db',
+      main: '#1976d3',
+      dark: '#115293',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#f73378',
+      main: '#f50057',
+      dark: '#ab003c',
+      contrastText: '#fff',
+    },
+    common: {
+      black,
+      darkBlack
+    },
+    warning: {
+      light: warningLight,
+      main: warningMain,
+      dark: warningDark
+    },
+    // Used to shift a color's luminance by approximately
+    // two indexes within its tonal palette.
+    // E.g., shift from Red 500 to Red 300 or Red 700.
+    tonalOffset: 0.2,
+    background: {
+      default: '#ffffff'
+    },
+    spacing
+  },
+  breakpoints: {
+    // Define custom breakpoint values.
+    // These will apply to Material-UI components that use responsive
+    // breakpoints, such as `Grid` and `Hidden`. You can also use the
+    // theme breakpoint functions `up`, `down`, and `between` to create
+    // media queries for these breakpoints
+    values: {
+      xl,
+      lg,
+      md,
+      sm,
+      xs
+    }
+  },
+  border: {
+    borderColor: borderColor,
+    borderWidth: borderWidth,
+  },
+  overrides: {
+    MuiExpansionPanel: {
+      root: {
+        position: 'static'
+      }
+    },
+    MuiTableCell: {
+      root: {
+        paddingLeft: spacing * 2,
+        paddingRight: spacing * 2,
+        borderBottom: `${borderWidth}px solid ${borderColor}`,
+        [`@media (max-width:  ${sm}px)`]: {
+          paddingLeft: spacing,
+          paddingRight: spacing
+        }
+      }
+    },
+    MuiDivider: {
+      root: {
+        backgroundColor: borderColor,
+        height: borderWidth
+      }
+    },
+    MuiPrivateNotchedOutline: {
+      root: {
+        borderWidth: borderWidth
+      }
+    },
+    MuiListItem: {
+      divider: {
+        borderBottom: `${borderWidth}px solid ${borderColor}`
+      }
+    },
+    MuiDialog: {
+      paper: {
+        width: '100%',
+        maxWidth: 430,
+        marginLeft: spacing,
+        marginRight: spacing
+      }
+    },
+    MuiTooltip: {
+      tooltip: {
+        backgroundColor: darkBlack
+      }
+    },
+    MuiExpansionPanelDetails: {
+      root: {
+        [`@media (max-width:  ${sm}px)`]: {
+          paddingLeft: spacing,
+          paddingRight: spacing
+        }
+      }
+    }
+  },
+  typography: {
+    useNextVariants: true
+  }
+});
+
+export default responsiveFontSizes(blueTheme);
