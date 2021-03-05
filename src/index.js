@@ -11,7 +11,7 @@ import theme from './theme';
 
 ReactDOM.render(
   // Tempory fix for React 17+ with: Error findDOMNode is deprecated in StrictMode
-  <React.StrictMode>
+  // <React.StrictMode>
     <RecoilRoot>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
@@ -21,7 +21,7 @@ ReactDOM.render(
         </ThemeProvider>
       </BrowserRouter>
     </RecoilRoot>
-  </React.StrictMode>
+  // </React.StrictMode>
   ,
   document.getElementById('root')
 );

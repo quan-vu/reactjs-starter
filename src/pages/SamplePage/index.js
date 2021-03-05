@@ -11,6 +11,9 @@ import {
 // Samples demo
 import SampleClickOutside from './components/SampleClickOutsideView';
 
+// Demo Recoil Form
+import SampleRecoilCrudPage from 'src/components/pages/SampleRecoilCrudPage';
+
 function Sample() {
     let { topicId } = useParams();
     return <h3>Requested topic ID: {topicId}</h3>;
@@ -52,6 +55,10 @@ function SamplePage() {
 
         <div>
           <SampleClickOutside />
+
+          <hr/>
+
+          <SampleRecoilCrudPage/>
         </div>
       </div>
     );
