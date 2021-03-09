@@ -4,26 +4,46 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
-
+import { useRecoilState, useRecoilValue } from "recoil";
 // By default, router "/" must be import, it can not use lazyload
-import FrontLayout from 'src/components/Layout/FrontLayout';
 import routes from 'src/routes';
+import { appState } from 'src/states/appState';
+
+import FrontLayout from 'src/components/Layout/FrontLayout';
+import DashboardLayout from 'src/components/Layout/DashboardLayout';
 
 export default function App() {
+
+  const [appConfig, setAppConfig] = useRecoilState(appState);
+
+  console.log(appConfig);
+  
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route>
-          <FrontLayout>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Switch>
-                {routes.map((route) => (
-                  <RouteWithSubRoutes key={route.key} {...route} />
-                ))}
-              </Switch>
-            </Suspense>
-          </FrontLayout>
+          {appConfig.defaultLayout === 'Dashboard'
+            ?
+            <DashboardLayout>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                  {routes.map((route) => (
+                    <RouteWithSubRoutes key={route.key} {...route} />
+                  ))}
+                </Switch>
+              </Suspense>
+            </DashboardLayout>
+            : 
+            <FrontLayout>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                  {routes.map((route) => (
+                    <RouteWithSubRoutes key={route.key} {...route} />
+                  ))}
+                </Switch>
+              </Suspense>
+            </FrontLayout>
+          }
         </Route>
       </Switch>
     </Suspense>
