@@ -1,13 +1,13 @@
 import React from 'react';
 import css from './index.module.scss';
-import Logo from '../../Logo';
+import SidebarMenu from '../SidebarMenu';
 
 const Sidebar = () => {
   return (
     <div className={css.wrap}>
       <div className={css.body}>
         <div className={css.content}>
-          I'm Sidebar
+          <SidebarMenu />
         </div>
       </div>
     </div>
