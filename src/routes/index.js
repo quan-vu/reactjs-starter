@@ -2,13 +2,14 @@ import React, { Suspense, lazy } from "react";
 
 // Lazy load component
 const HomePage = lazy(() => import('src/modules/HomePage'));
+const BuilderPage = lazy(() => import("src/modules/BuilderPage"));
 
 // const SandwichesView = lazy(() => import("../views/SandwichesView"));
 // const TacosView = lazy(() => import("../views/TacosView"));
 // const TacosBusView = lazy(() => import("../views/TacosBusView"));
 // const TacosCartView = lazy(() => import("../views/TacosCartView"));
-const TopicsView = lazy(() => import("../views/TopicsView"));
-const HomeView = lazy(() => import("../views/HomeView"));
+// const TopicsView = lazy(() => import("../views/TopicsView"));
+// const HomeView = lazy(() => import("../views/HomeView"));
 
 // const SamplePage = lazy(() => import("../pages/SamplePage"));
 
@@ -29,13 +30,22 @@ const routes = [
     component: HomePage
   },
   {
-    path: "/topics",
-    name: "Topics  (demo nested routes with params :topicId)",
-    key: "TOPICS",
-    exact: false,
+    path: "/builder",
+    name: "Builder",
+    key: "BUILDER",
+    exact: true,
     layout: true,
-    component: TopicsView,
+    component: BuilderPage,
+    routes: [],
   },
+  // {
+  //   path: "/topics",
+  //   name: "Topics",
+  //   key: "TOPICS",
+  //   exact: false,
+  //   layout: true,
+  //   component: TopicsView,
+  // },
   // {
   //   path: "/sandwiches",
   //   name: "Sandwiches",
