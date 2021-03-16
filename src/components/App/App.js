@@ -2,7 +2,9 @@ import React, { Suspense, lazy } from "react";
 import {
   Switch,
   Route,
-  Link
+  Link,
+  useLocation,
+  useRouteMatch,
 } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 // By default, router "/" must be import, it can not use lazyload
@@ -14,26 +16,22 @@ import DashboardLayout from 'src/components/Layout/DashboardLayout';
 
 export default function App() {
 
-  const [appConfig, setAppConfig] = useRecoilState(appState);
+  let location = useLocation();
+  let isAdminSite = useRouteMatch("/admin/*");
 
-  console.log(appConfig);
+  const [appConfig, setAppConfig] = useRecoilState(appState);
+  
+  console.log("appConfig:", appConfig);
+  console.log("location:", location);
+  console.log("isAdminSite:", isAdminSite);
   
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route>
-          {appConfig.defaultLayout === 'Dashboard'
-            ?
-            <DashboardLayout>
-              <Suspense fallback={<div>Loading...</div>}>
-                <Switch>
-                  {routes.map((route) => (
-                    <RouteWithSubRoutes key={route.key} {...route} />
-                  ))}
-                </Switch>
-              </Suspense>
-            </DashboardLayout>
-            : 
+          { location.pathname === '/'
+          // appConfig.defaultLayout === 'Dashboard'
+            ? 
             <FrontLayout>
               <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
@@ -43,6 +41,16 @@ export default function App() {
                 </Switch>
               </Suspense>
             </FrontLayout>
+            :
+            <DashboardLayout>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                  {routes.map((route) => (
+                    <RouteWithSubRoutes key={route.key} {...route} />
+                  ))}
+                </Switch>
+              </Suspense>
+            </DashboardLayout>
           }
         </Route>
       </Switch>

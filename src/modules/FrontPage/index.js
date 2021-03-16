@@ -11,7 +11,7 @@ import { userState } from 'src/states/userState';
 import HelloWorld from 'src/components/HelloWorld/HelloWorld';
 import SimpleDialog from 'src/components/Modals/SimpleDialog';
 
-function DashboardPage() {
+function FrontPage() {
 
     const emails = ['username@gmail.com', 'user02@gmail.com'];
 
@@ -68,4 +68,4 @@ function DashboardPage() {
     )
 }
 
-export default DashboardPage;
+export default FrontPage;

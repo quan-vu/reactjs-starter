@@ -1,7 +1,8 @@
 import React, { Suspense, lazy } from "react";
 
 // Lazy load component
-const HomePage = lazy(() => import('src/modules/HomePage'));
+const DashboardPage = lazy(() => import('src/modules/DashboardPage'));
+const FrontPage = lazy(() => import('src/modules/FrontPage'));
 const BuilderPage = lazy(() => import("src/modules/BuilderPage"));
 
 // const SandwichesView = lazy(() => import("../views/SandwichesView"));
@@ -21,18 +22,28 @@ const BuilderPage = lazy(() => import("src/modules/BuilderPage"));
 // with `path` and `component` props, ordered the same
 // way you'd do inside a `<Switch>`.
 const routes = [
+  // Front routes
   {
     path: "/",
     name: "Home",
-    key: "ROOT",
+    key: "FRONT",
     exact: true,
     layout: true,
-    component: HomePage
+    component: FrontPage
+  },
+  // Dashboard route
+  {
+    path: "/admin",
+    name: "Dashboard",
+    key: "ADMIN_DASHBOARD",
+    exact: true,
+    layout: true,
+    component: DashboardPage
   },
   {
-    path: "/builder",
+    path: "/admin/builder",
     name: "Builder",
-    key: "BUILDER",
+    key: "ADMIN_BUILDER",
     exact: true,
     layout: true,
     component: BuilderPage,

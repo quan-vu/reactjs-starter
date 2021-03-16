@@ -3,7 +3,7 @@ import css from './index.module.scss';
 import routes from 'src/routes';
 import { Link } from "react-router-dom";
 
-const menuItems = routes.map((route) => {
+const menuItems = routes.filter((item) => item.key.indexOf('ADMIN_') > -1 ).map((route) => {
   return <li key={route.key}>
     <Link to={route.path}>{route.name}</Link>
   </li>
