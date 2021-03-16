@@ -29,9 +29,7 @@ export default function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
         <Route>
-          { location.pathname === '/'
-          // appConfig.defaultLayout === 'Dashboard'
-            ? 
+          { isAdminSite === null ? 
             <FrontLayout>
               <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
