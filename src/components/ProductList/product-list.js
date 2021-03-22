@@ -10,7 +10,7 @@ function ProductList ({ products=[] }) {
   return (
         <div className={css.wrap}>
           {products.map((product) => 
-            <div className={css.productCardItem}>
+            <div  key={product.id} className={css.productCardItem}>
               <ProductItem product={product}/>
             </div>
           )}

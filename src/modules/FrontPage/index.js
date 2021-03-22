@@ -12,6 +12,9 @@ import HelloWorld from 'src/components/HelloWorld/HelloWorld';
 import SimpleDialog from 'src/components/Modals/SimpleDialog';
 
 import ProductList from 'src/components/ProductList/product-list';
+import { GET_PRODUCTS } from 'src/services/graphql/query';
+import { useQuery, gql } from '@apollo/client';
+
 
 function FrontPage() {
 
@@ -54,16 +57,19 @@ function FrontPage() {
       });      
     }
 
+    // Get Products from Graphql API
+    const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+
     return (
-        <React.Fragment>
-            <CssBaseline />
-            <Container>
-                <div>
-                    <h3>Welcome to Homepage!</h3>
-                    <ProductList products={products}/>
-                </div>
-            </Container>
-        </React.Fragment>
+        <div>
+            <h3>Welcome to Homepage!</h3>
+            
+            {data.products.length && <ProductList products={data.products}/> }
+            
+        </div>
     )
 }
 

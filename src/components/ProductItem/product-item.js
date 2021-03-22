@@ -44,7 +44,7 @@ function ProductItem ({ product }) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} key={product.id}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}

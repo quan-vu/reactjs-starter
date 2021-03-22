@@ -9,9 +9,18 @@ import App from './components/App/App';
 import './index.scss';
 import defaultTheme from './themes/default-theme';
 
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
+
 ReactDOM.render(
   // Tempory fix for React 17+ with: Error findDOMNode is deprecated in StrictMode
   // <React.StrictMode>
+  <ApolloProvider client={client}>
     <RecoilRoot>
       <BrowserRouter>
         <ThemeProvider theme={defaultTheme}>
@@ -21,6 +30,7 @@ ReactDOM.render(
         </ThemeProvider>
       </BrowserRouter>
     </RecoilRoot>
+    </ApolloProvider>
   // </React.StrictMode>
   ,
   document.getElementById('root')
